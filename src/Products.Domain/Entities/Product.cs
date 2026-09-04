@@ -2,10 +2,8 @@ using Products.Domain.Exceptions;
 
 namespace Products.Domain.Entities;
 
-/// <summary>
 /// Entidad raíz del agregado Producto. Encapsula sus propias invariantes:
 /// el stock nunca puede quedar en negativo y el precio nunca puede ser negativo.
-/// </summary>
 public class Product
 {
     public Guid Id { get; private set; }
@@ -29,10 +27,9 @@ public class Product
         CreatedAt = DateTime.UtcNow;
     }
 
-    /// <summary>
+ 
     /// Factory method: punto único de creación, garantiza que nunca exista
     /// un Product en un estado inválido.
-    /// </summary>
     public static Product Create(string name, string description, decimal price, int initialStock)
         => new(name, description, price, initialStock);
 
@@ -44,10 +41,9 @@ public class Product
         Touch();
     }
 
-    /// <summary>
     /// Ajusta el stock actual sumando o restando unidades (delta positivo o negativo).
     /// Lanza InsufficientStockException si la operación dejaría el stock en negativo.
-    /// </summary>
+
     public void AdjustStock(int delta)
     {
         if (delta == 0)

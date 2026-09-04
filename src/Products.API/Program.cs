@@ -52,6 +52,13 @@ using (var scope = app.Services.CreateScope())
     dbContext.Database.Migrate();
 }
 
+app.Use(async (context, next) =>
+{
+    context.Response.Headers.CacheControl = "no-store, no-cache, must-revalidate";
+    context.Response.Headers.Pragma = "no-cache";
+    await next();
+});
+
 // --- Pipeline HTTP ---
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 

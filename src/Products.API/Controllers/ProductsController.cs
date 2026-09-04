@@ -17,7 +17,7 @@ public class ProductsController : ControllerBase
         _productService = productService;
     }
 
-    /// <summary>Crea un nuevo producto.</summary>
+    //Crea un nuevo producto.
     [HttpPost]
     [ProducesResponseType(typeof(ProductResponse), StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -29,7 +29,7 @@ public class ProductsController : ControllerBase
         return CreatedAtAction(nameof(GetById), new { id = product.Id }, product);
     }
 
-    /// <summary>Consulta un producto por su identificador.</summary>
+    //Consulta un producto por su identificador.
     [HttpGet("{id:guid}")]
     [ProducesResponseType(typeof(ProductResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -39,7 +39,7 @@ public class ProductsController : ControllerBase
         return Ok(product);
     }
 
-    /// <summary>Lista productos de forma paginada.</summary>
+    // Lista productos de forma paginada
     [HttpGet]
     [ProducesResponseType(typeof(PagedResponse<ProductResponse>), StatusCodes.Status200OK)]
     public async Task<ActionResult<PagedResponse<ProductResponse>>> GetPaged(
@@ -50,7 +50,7 @@ public class ProductsController : ControllerBase
         return Ok(result);
     }
 
-    /// <summary>Actualiza nombre, descripción y precio de un producto.</summary>
+    //Actualiza nombre, descripción y precio de un producto
     [HttpPut("{id:guid}")]
     [ProducesResponseType(typeof(ProductResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -64,10 +64,10 @@ public class ProductsController : ControllerBase
         return Ok(product);
     }
 
-    /// <summary>
-    /// Ajusta el stock de un producto sumando o restando unidades.
-    /// Valida que el resultado nunca quede en negativo.
-    /// </summary>
+
+    // Ajusta el stock de un producto sumando o restando unidades.
+    // Valida que el resultado nunca quede en negativo.
+
     [HttpPatch("{id:guid}/stock")]
     [ProducesResponseType(typeof(ProductResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -81,7 +81,7 @@ public class ProductsController : ControllerBase
         return Ok(product);
     }
 
-    /// <summary>Elimina un producto.</summary>
+    //Elimina un producto.</summary>
     [HttpDelete("{id:guid}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
