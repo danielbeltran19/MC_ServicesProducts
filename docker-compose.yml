@@ -6,8 +6,9 @@ services:
     container_name: products-api
     restart: unless-stopped
     network_mode: "host"
-    environment:
+        environment:
       ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT:-Production}
+      ASPNETCORE_URLS: "http://+:8081"
       ConnectionStrings__ProductsDb: "Host=${POSTGRES_HOST};Port=${POSTGRES_PORT};Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}"
 
   # Postgres local, OPCIONAL — no se levanta con `docker compose up` a menos
