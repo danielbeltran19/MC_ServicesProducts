@@ -1,0 +1,40 @@
+## .NET
+bin/
+obj/
+out/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Rider / VS / VS Code
+.vs/
+.vscode/
+.idea/
+*.DotSettings.user
+
+## Build results
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
+
+## Docker
+docker-compose.override.yml
+
+## Env / secrets
+*.env
+.env
+appsettings.Local.json
+appsettings.*.local.json
+
+## OS
+.DS_Store
+Thumbs.db
+
+## Logs
+*.log
+logs/
+
+## EF Core
+*.db
