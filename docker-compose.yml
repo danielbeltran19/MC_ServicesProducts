@@ -5,11 +5,10 @@ services:
       dockerfile: Dockerfile
     container_name: products-api
     restart: unless-stopped
+    network_mode: "host"
     environment:
       ASPNETCORE_ENVIRONMENT: ${ASPNETCORE_ENVIRONMENT:-Production}
       ConnectionStrings__ProductsDb: "Host=${POSTGRES_HOST};Port=${POSTGRES_PORT};Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}"
-    ports:
-      - "8080:8080"
 
   # Postgres local, OPCIONAL — no se levanta con `docker compose up` a menos
   # que lo pidas explícitamente con `docker compose --profile local-db up`.
